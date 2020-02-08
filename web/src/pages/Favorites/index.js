@@ -16,7 +16,6 @@ class Favorite extends Component{
     
     async componentDidMount (){       
         const response = await api_localhost.get(`/activity`)
-        console.log(response.data.status)
         if(response.data.status != "error"){
             await response.data.data.map(async test =>{
                 const response = await api_boredapi.get(`/activity?key=${test.key_activity}`)

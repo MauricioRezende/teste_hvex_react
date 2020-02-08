@@ -42,6 +42,7 @@ class Activity extends Component{
             type: response.data.type,
             key: response.data.key,
             random: true,
+            config: false,
             
         })
     }
@@ -50,9 +51,8 @@ class Activity extends Component{
         e.preventDefault();
         const data = { key_activity: this.state.key }
 
-        const response = await api_localhost.get(`/activity/${data.key_activity}`)
-        
-        if(response.data.data.key_activity == "undefined"){
+        const response = await api_localhost.get(`/activity/${data.key_activity}`)        
+        if(response.data.data.key_activity){
             await api_localhost.delete(`/activity/${data.key_activity}`)
             this.setState({
                 favorite: false,
