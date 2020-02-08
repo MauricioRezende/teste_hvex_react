@@ -10,23 +10,28 @@ import * as _ from "lodash";
 class Favorite extends Component{
     state = {
         data:[],
-        loading: true
+        loading: true,
+        error: false
     }
     
     async componentDidMount (){       
         const response = await api_localhost.get(`/activity`)
-        
-        await response.data.data.map(async test =>{
-            const response = await api_boredapi.get(`/activity?key=${test.key_activity}`)
-            const {data} = this.state
-            const data_ = {
-                data__: [...data,response.data],
-            }
-            this.setState({
-                data: data_.data__,
-                loading: false
+        console.log(response.data.status)
+        if(response.data.status != "error"){
+            await response.data.data.map(async test =>{
+                const response = await api_boredapi.get(`/activity?key=${test.key_activity}`)
+                const {data} = this.state
+                const data_ = {
+                    data__: [...data,response.data],
+                }
+                this.setState({
+                    data: data_.data__,
+                    loading: false
+                })
             })
-        })
+        }else{
+            this.setState({error: true})
+        }
     }
 
     handleFavorite = async (e,data2) =>{
@@ -45,7 +50,7 @@ class Favorite extends Component{
     }
 
     render(){
-        const { data, loading } = this.state
+        const { data, loading, error } = this.state
         return(
             <Container>
                 <h1>Favorites</h1>
@@ -61,7 +66,9 @@ class Favorite extends Component{
                     </div>
                 </div>
                 {loading && (
-                    <h5>Carregando...</h5>
+                    !error &&(
+                        <h5>Carregando...</h5>  
+                    )
                 )}
                 {data.map(test=>(
                     <div className="row" key={test.key}>
