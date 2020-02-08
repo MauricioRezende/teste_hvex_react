@@ -22,4 +22,4 @@ Minha API está configurada no seguinte caminho "http://localhost/hvex-api/api",
 
 OBS.:
 
-Como a API é em PHP, é necesário roda-la em um servidor APACHE
+Como a API é em PHP, é necesário executá-la em um servidor APACHE
