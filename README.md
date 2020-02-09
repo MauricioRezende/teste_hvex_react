@@ -16,7 +16,7 @@ POST   api/activity/ -> salva no banco de dados uma atividade vinda por POST de 
 
 DELETE api/activity/chave -> deleta uma atividade de chave especificada na URL.
 
-Para executar a aplicação basta abrir uma janela do terminal dentro da pasta "web" e executo o comando "yarn start" (é necessário ter o yarn instalado ou outro gerenciador de pacotes também instalado)
+Para executar a aplicação basta abrir uma janela do terminal dentro da pasta "web" e executo o comando "npm install" (é necessário ter o Node.js instalado), em seguida "yarn start" (é necessário ter o Yarn instalado), feito isso o projeto irá abrir em seu navegador.
 
 Minha API está configurada no seguinte caminho "http://localhost/hvex-api/api", ou seja, a pasta "api" que estou enviando deve ficar detro da pasta "hvex-api" (a organização das pastas não ficou muito boa, mas é por que já estava utilizando diversas outras aqui com nomes muito parecidos). A pasta "web" irá funcionar independente do caminho, mas para fim de organização, pode ser colocada dentro da pasta "hvex-api" também. Caso queira alterar o caminho da api, basta abrir o arquivo "api_localhost.js" que está no caminho "web/src/services" e alterar da maneira que achar melhor.
 
